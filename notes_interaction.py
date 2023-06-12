@@ -25,9 +25,10 @@ def Create():
 
 # Append notes.csv by adding new note(row)
 def AddNote():
-    notename = None
+    noteName = input('Note name:  ')
+    noteText = input('Note text:  ')
     # Create the dictionary (=row)
-    row = {'name': notename, 'date': current_date, 'Time': current_time, }
+    row = {'Name': noteName, 'Date': current_date, 'Time': current_time, 'Note': noteText}
 
     # Open the CSV file in "append" mode
     with open('notes.csv', 'a', newline='') as f:
