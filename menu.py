@@ -20,15 +20,30 @@ def print_menu():
 
 
 def option1():
-    print(c1,'\n')
+    print(c1, '\n')
     AddNote()
 
-def option2():
-    print('Handle option \'Option 2\'')
 
+def option2():
+    print(c2, '\n')
+    EditNote()
 
 def option3():
-    print('Handle option \'Option 3\'')
+    print(c3, '\n')
+    DeleteNote()
+def option4():
+    print('Handle option \'Option 4\'')
+    ViewNotes()
+
+
+def option5():
+    print('Handle option \'Option 5\'')
+
+
+# with open('some.csv', newline='') as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         print(row)
 
 
 if __name__ == '__main__':
@@ -47,7 +62,7 @@ if __name__ == '__main__':
         elif option == 3:
             option3()
         elif option == 4:
-            option()
+            option4()
         elif option == 5:
             print('Thanks message before exiting')
             exit()
