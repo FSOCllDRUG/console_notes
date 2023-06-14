@@ -99,11 +99,9 @@ def choose_v_menu():
     elif option == 4:
         v_option4()
     else:
-        print('Invalid option. Please enter a number between 1 and 3.')
+        print('Invalid option. Please enter a number between 1 and 4.')
 
 
-# if __name__ == '__main__':
-#     while True:
 def main_menu():
     print_menu()
     option = ''

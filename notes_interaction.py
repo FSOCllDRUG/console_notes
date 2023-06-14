@@ -1,7 +1,6 @@
 import csv
 import os
 import os.path
-# import platform
 import re
 from prettytable import PrettyTable
 from datetime import datetime
@@ -11,9 +10,6 @@ current_date = now.strftime("%d.%m.%y")
 current_time = now.strftime("%H:%M")
 header = ['Id', 'Name', 'Date', 'Time', 'Note']
 data = ['none', current_date, current_time, 'test']
-
-# r = csv.reader(open('notes.csv'))
-# lines = list(r)
 
 table = PrettyTable()
 
@@ -27,22 +23,13 @@ selected_date = []  # Creating a list for confirmed notes(rows)
 empty = 'No notes were created on this date.'  # Error messages if no notes(rows) for entered date
 
 
-# date = None #Creating empty date
-
-
-#
-
 # Creating notes.csv if it doesn't exist
 def Create():
     if os.path.isfile('notes.csv') == False:
         with open('notes.csv', 'w', encoding='UTF8', newline='') as f:
             writer = csv.writer(f)
 
-            # write the header
             writer.writerow(header)
-
-            # write the data
-            # writer.writerow([])
 
 
 # Append notes.csv by adding new note(row)
@@ -99,32 +86,16 @@ def DeleteNote():
     writer.writerows(lines)
 
 
-# Clear terminal screen function for unix and windows oses
-# def ClearScreen():
-#     if os.name == 'nt':
-#         os.system('cls')
-#     elif os.name == 'posix':
-#         os.system('clear')
-#     elif os.name == 'java':
-#         os.system('cls')
-#     else:
-#         print("\n")
-
-# if platform == 'Windows':
-#     input('Press <Enter> to return in menu...')
-#     os.system('CLS')
-# else:
-#     input('Press <Enter> to return in menu...')
-#     os.system('clear')
-
-
 def InputDate():
-    date = input('Enter the date: ')
+    date = input('Enter the date in the format xx.xx.xx or x.xx.xx: ')
     match = regex.search(date)
     if match:
         SearchV(date)
     else:
-        print("Wrong format! Enter text in the format xx.xx.xx or x.xx.xx")
+        print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+              "\nWrong format! Pls enter date in the format xx.xx.xx or x.xx.xx"
+              "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        InputDate()
 
 
 def SearchV(date):
@@ -133,17 +104,10 @@ def SearchV(date):
     table = PrettyTable()
     ec = 0
     for item in list(lines):
-        # print(item)
         if date in item:
-            # print(item)
             selected_date.append(item)
             ec += 1
     if ec != 0:
-        # for item in list(selected_date):
-        #     print(item)
-        # for sublist in selected_date:
-        # print(' '.join(sublist))
-        # table.field_names = lines[0]
         table.add_rows(selected_date)
         print(table)
 
@@ -160,6 +124,3 @@ def OneNote():
     table.field_names = lines[0]
     table.add_row(lines[on])
     print(table)
-
-# table = PrettyTable()
-# InputDate()
